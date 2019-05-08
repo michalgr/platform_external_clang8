@@ -1,0 +1,80 @@
+//
+// Copyright (C) 2019 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+cc_library_headers {
+    name: "clang8_headers",
+    header_libs: ["clang8_generated_headers"],
+    export_header_lib_headers: ["clang8_generated_headers"],
+    export_include_dirs: ["include"],
+    target: {
+        android: {
+            export_include_dirs: ["device/include"],
+        },
+        host: {
+            export_include_dirs: ["host/include"],
+        },
+    },
+}
+
+cc_defaults {
+    name: "clang8_defaults",
+    header_libs: ["clang8_headers"],
+    cflags: [
+        "-Wno-unused-parameter",
+    ],
+    static_libs: [
+        "libllvm8",
+    ],
+}
+
+cc_library_static {
+    name: "libclang8",
+    defaults: ["clang8_defaults"],
+    export_header_lib_headers: [
+        "clang8_headers",
+    ],
+    whole_static_libs: [
+        "clang8_lib_ARCMigrate",
+        "clang8_lib_AST",
+        "clang8_lib_ASTMatchers",
+        "clang8_lib_ASTMatchers_Dynamic",
+        "clang8_lib_Analysis",
+        "clang8_lib_Basic",
+        "clang8_lib_CodeGen",
+        "clang8_lib_CrossTU",
+        "clang8_lib_Driver",
+        "clang8_lib_Edit",
+        "clang8_lib_Format",
+        "clang8_lib_Frontend",
+        "clang8_lib_Frontend_Rewrite",
+        "clang8_lib_FrontendTool",
+        "clang8_lib_Index",
+        "clang8_lib_Lex",
+        "clang8_lib_Parse",
+        "clang8_lib_Rewrite",
+        "clang8_lib_Sema",
+        "clang8_lib_Serialization",
+        "clang8_lib_StaticAnalyzer_Checkers",
+        "clang8_lib_StaticAnalyzer_Core",
+        "clang8_lib_StaticAnalyzer_Frontend",
+        "clang8_lib_Tooling",
+        "clang8_lib_Tooling_ASTDiff",
+        "clang8_lib_Tooling_Core",
+        "clang8_lib_Tooling_Inclusions",
+        "clang8_lib_Tooling_Refactoring",
+        "clang8_tools_libclang",
+    ],
+}
