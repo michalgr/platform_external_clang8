@@ -1,0 +1,6 @@
+The source code of clang-8.0.0 was downloaded from
+http://releases.llvm.org/8.0.0/cfe-8.0.0.src.tar.xz
+
+To build clang-8.0.0 for Android we first need to build clang-tblgen and
+llvm-tblgen code generators. Both require subset of clang and llvm codebase
+that does not require any of the  generated code.
