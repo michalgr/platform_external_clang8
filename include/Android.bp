@@ -1,0 +1,376 @@
+//
+// Copyright (C) 2019 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+header_genrules = [
+    "clang8_include_clang_AST_Attr_inc",
+    "clang8_include_clang_AST_AttrImpl_inc",
+    "clang8_include_clang_AST_AttrTextNodeDump_inc",
+    "clang8_include_clang_AST_AttrNodeTraverse_inc",
+    "clang8_include_clang_AST_AttrVisitor_inc",
+    "clang8_include_clang_AST_StmtNodes_inc",
+    "clang8_include_clang_AST_DeclNodes_inc",
+    "clang8_include_clang_AST_CommentNodes_inc",
+    "clang8_include_clang_AST_CommentHTMLTags_inc",
+    "clang8_include_clang_AST_CommentHTMLTagsProperties_inc",
+    "clang8_include_clang_AST_CommentHTMLNamedCharacterReferences_inc",
+    "clang8_include_clang_AST_CommentCommandInfo_inc",
+    "clang8_include_clang_AST_CommentCommandList_inc",
+    "clang8_include_clang_AST_StmtDataCollectors_inc",
+    "clang8_include_clang_Basic_DiagnosticAnalysisKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticASTKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticCommentKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticCommonKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticCrossTUKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticDriverKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticFrontendKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticLexKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticParseKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticRefactoringKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticSemaKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticSerializationKinds_inc",
+    "clang8_include_clang_Basic_DiagnosticGroups_inc",
+    "clang8_include_clang_Basic_DiagnosticIndexName_inc",
+    "clang8_include_clang_Basic_AttrList_inc",
+    "clang8_include_clang_Basic_AttrSubMatchRulesList_inc",
+    "clang8_include_clang_Basic_AttrHasAttributeImpl_inc",
+    "clang8_include_clang_Basic_arm_neon_inc",
+    "clang8_include_clang_Basic_arm_fp16_inc",
+    "clang8_include_clang_Driver_Options_inc",
+    "clang8_include_clang_Parse_AttrParserStringSwitches_inc",
+    "clang8_include_clang_Parse_AttrSubMatchRulesParserStringSwitches_inc",
+    "clang8_include_clang_Sema_AttrTemplateInstantiate_inc",
+    "clang8_include_clang_Sema_AttrParsedAttrList_inc",
+    "clang8_include_clang_Sema_AttrParsedAttrKinds_inc",
+    "clang8_include_clang_Sema_AttrSpellingListIndex_inc",
+    "clang8_include_clang_Sema_AttrParsedAttrImpl_inc",
+    "clang8_include_clang_Serialization_AttrPCHRead_inc",
+    "clang8_include_clang_Serialization_AttrPCHWrite_inc",
+    "clang8_include_clang_StaticAnalyzer_Checkers_Checkers_inc",
+]
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_Attr_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/Attrs.inc",
+    generators: "-gen-clang-attr-classes",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_AttrImpl_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/AttrImpl.inc",
+    generators: "-gen-clang-attr-impl",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_AttrTextNodeDump_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/AttrTextNodeDump.inc",
+    generators: "-gen-clang-attr-text-node-dump",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_AttrNodeTraverse_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/AttrNodeTraverse.inc",
+    generators: "-gen-clang-attr-node-traverse",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_AttrVisitor_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/AttrVisitor.inc",
+    generators: "-gen-clang-attr-ast-visitor",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_StmtNodes_inc",
+    in: "clang/Basic/StmtNodes.td",
+    out: "clang/AST/StmtNodes.inc",
+    generators: "-gen-clang-stmt-nodes",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_DeclNodes_inc",
+    in: "clang/Basic/DeclNodes.td",
+    out: "clang/AST/DeclNodes.inc",
+    generators: "-gen-clang-decl-nodes",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_CommentNodes_inc",
+    in: "clang/Basic/CommentNodes.td",
+    out: "clang/AST/CommentNodes.inc",
+    generators: "-gen-clang-comment-nodes",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_CommentHTMLTags_inc",
+    in: "clang/AST/CommentHTMLTags.td",
+    out: "clang/AST/CommentHTMLTags.inc",
+    generators: "-gen-clang-comment-html-tags",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_CommentHTMLTagsProperties_inc",
+    in: "clang/AST/CommentHTMLTags.td",
+    out: "clang/AST/CommentHTMLTagsProperties.inc",
+    generators: "-gen-clang-comment-html-tags-properties",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_CommentHTMLNamedCharacterReferences_inc",
+    in: "clang/AST/CommentHTMLNamedCharacterReferences.td",
+    out: "clang/AST/CommentHTMLNamedCharacterReferences.inc",
+    generators: "-gen-clang-comment-html-named-character-references",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_CommentCommandInfo_inc",
+    in: "clang/AST/CommentCommands.td",
+    out: "clang/AST/CommentCommandInfo.inc",
+    generators: "-gen-clang-comment-command-info",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_CommentCommandList_inc",
+    in: "clang/AST/CommentCommands.td",
+    out: "clang/AST/CommentCommandList.inc",
+    generators: "-gen-clang-comment-command-list",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_AST_StmtDataCollectors_inc",
+    in: "clang/AST/StmtDataCollectors.td",
+    out: "clang/AST/StmtDataCollectors.inc",
+    generators: "-gen-clang-data-collectors",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticAnalysisKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticAnalysisKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Analysis",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticASTKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticASTKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=AST",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticCommentKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticCommentKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Comment",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticCommonKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticCommonKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Common",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticCrossTUKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticCrossTUKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=CrossTU",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticDriverKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticDriverKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Driver",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticFrontendKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticFrontendKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Frontend",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticLexKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticLexKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Lex",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticParseKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticParseKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Parse",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticRefactoringKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticRefactoringKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Refactoring",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticSemaKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticSemaKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Sema",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticSerializationKinds_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticSerializationKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Serialization",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticGroups_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticGroups.inc",
+    generators: "-gen-clang-diag-groups",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_DiagnosticIndexName_inc",
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticIndexName.inc",
+    generators: "-gen-clang-diags-index-name",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_AttrList_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Basic/AttrList.inc",
+    generators: "-gen-clang-attr-list",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_AttrSubMatchRulesList_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Basic/AttrSubMatchRulesList.inc",
+    generators: "-gen-clang-attr-subject-match-rule-list",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_AttrHasAttributeImpl_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Basic/AttrHasAttributeImpl.inc",
+    generators: "-gen-clang-attr-has-attribute-impl",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_arm_neon_inc",
+    in: "clang/Basic/arm_neon.td",
+    out: "clang/Basic/arm_neon.inc",
+    generators: "-gen-arm-neon-sema",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Basic_arm_fp16_inc",
+    in: "clang/Basic/arm_fp16.td",
+    out: "clang/Basic/arm_fp16.inc",
+    generators: "-gen-arm-neon-sema",
+}
+
+llvm8_tblgen {
+    name: "clang8_include_clang_Driver_Options_inc",
+    in: "clang/Driver/Options.td",
+    out: "clang/Driver/Options.inc",
+    generators: "-gen-opt-parser-defs",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Parse_AttrParserStringSwitches_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Parse/AttrParserStringSwitches.inc",
+    generators: "-gen-clang-attr-parser-string-switches",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Parse_AttrSubMatchRulesParserStringSwitches_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Parse/AttrSubMatchRulesParserStringSwitches.inc",
+    generators: "-gen-clang-attr-subject-match-rules-parser-string-switches",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Sema_AttrTemplateInstantiate_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrTemplateInstantiate.inc",
+    generators: "-gen-clang-attr-template-instantiate",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Sema_AttrParsedAttrList_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrParsedAttrList.inc",
+    generators: "-gen-clang-attr-parsed-attr-list",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Sema_AttrParsedAttrKinds_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrParsedAttrKinds.inc",
+    generators: "-gen-clang-attr-parsed-attr-kinds",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Sema_AttrSpellingListIndex_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrSpellingListIndex.inc",
+    generators: "-gen-clang-attr-spelling-index",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Sema_AttrParsedAttrImpl_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrParsedAttrImpl.inc",
+    generators: "-gen-clang-attr-parsed-attr-impl",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Serialization_AttrPCHRead_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Serialization/AttrPCHRead.inc",
+    generators: "-gen-clang-attr-pch-read",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_Serialization_AttrPCHWrite_inc",
+    in: "clang/Basic/Attr.td",
+    out: "clang/Serialization/AttrPCHWrite.inc",
+    generators: "-gen-clang-attr-pch-write",
+}
+
+clang8_tblgen {
+    name: "clang8_include_clang_StaticAnalyzer_Checkers_Checkers_inc",
+    in: "clang/StaticAnalyzer/Checkers/Checkers.td",
+    out: "clang/StaticAnalyzer/Checkers/Checkers.inc",
+    generators: "-gen-clang-sa-checkers",
+}
+
+cc_library_headers {
+    name: "clang8_generated_headers",
+    generated_headers: header_genrules,
+    export_generated_headers: header_genrules,
+}
