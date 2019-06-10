@@ -1,0 +1,11 @@
+bootstrap_go_package {
+    name: "soong-clang8",
+    pkgPath: "android/soong/external/clang8",
+    deps: [
+        "soong-android",
+    ],
+    srcs: [
+        "tblgen.go",
+    ],
+    pluginFor: ["soong_build"],
+}

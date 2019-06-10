@@ -14,12 +14,6 @@
 // limitations under the License.
 //
 
-clang_tblgen_includes = " -I external/clang8/include"
-llvm_tblgen_includes = " -I external/llvm8/include"
-basic_tblgen_includes = " -I external/clang8/include/clang/Basic"
-driver_tblgen_includes = " -I external/clang8/include/clang/Driver"
-checkers_tblgen_includes = " -I external/clang8/include/clang/StaticAnalyzer/Checkers"
-
 header_genrules = [
     "clang8_include_clang_AST_Attr_inc",
     "clang8_include_clang_AST_AttrImpl_inc",
@@ -67,271 +61,235 @@ header_genrules = [
     "clang8_include_clang_StaticAnalyzer_Checkers_Checkers_inc",
 ]
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_Attr_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-classes $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/AST/Attrs.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/Attrs.inc",
+    generators: "-gen-clang-attr-classes",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_AttrImpl_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-impl $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/AST/AttrImpl.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/AttrImpl.inc",
+    generators: "-gen-clang-attr-impl",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_AttrTextNodeDump_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-text-node-dump $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/AST/AttrTextNodeDump.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/AttrTextNodeDump.inc",
+    generators: "-gen-clang-attr-text-node-dump",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_AttrNodeTraverse_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-node-traverse $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/AST/AttrNodeTraverse.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/AttrNodeTraverse.inc",
+    generators: "-gen-clang-attr-node-traverse",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_AttrVisitor_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-ast-visitor $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/AST/AttrVisitor.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/AST/AttrVisitor.inc",
+    generators: "-gen-clang-attr-ast-visitor",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_StmtNodes_inc",
-    srcs: ["clang/Basic/StmtNodes.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-stmt-nodes $(in) -o $(out)",
-    out: ["clang/AST/StmtNodes.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/StmtNodes.td",
+    out: "clang/AST/StmtNodes.inc",
+    generators: "-gen-clang-stmt-nodes",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_DeclNodes_inc",
-    srcs: ["clang/Basic/DeclNodes.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-decl-nodes $(in) -o $(out)",
-    out: ["clang/AST/DeclNodes.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/DeclNodes.td",
+    out: "clang/AST/DeclNodes.inc",
+    generators: "-gen-clang-decl-nodes",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_CommentNodes_inc",
-    srcs: ["clang/Basic/CommentNodes.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-comment-nodes $(in) -o $(out)",
-    out: ["clang/AST/CommentNodes.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/CommentNodes.td",
+    out: "clang/AST/CommentNodes.inc",
+    generators: "-gen-clang-comment-nodes",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_CommentHTMLTags_inc",
-    srcs: ["clang/AST/CommentHTMLTags.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-comment-html-tags $(in) -o $(out)",
-    out: ["clang/AST/CommentHTMLTags.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/AST/CommentHTMLTags.td",
+    out: "clang/AST/CommentHTMLTags.inc",
+    generators: "-gen-clang-comment-html-tags",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_CommentHTMLTagsProperties_inc",
-    srcs: ["clang/AST/CommentHTMLTags.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-comment-html-tags-properties $(in) -o $(out)",
-    out: ["clang/AST/CommentHTMLTagsProperties.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/AST/CommentHTMLTags.td",
+    out: "clang/AST/CommentHTMLTagsProperties.inc",
+    generators: "-gen-clang-comment-html-tags-properties",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_CommentHTMLNamedCharacterReferences_inc",
-    srcs: ["clang/AST/CommentHTMLNamedCharacterReferences.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-comment-html-named-character-references $(in) -o $(out)",
-    out: ["clang/AST/CommentHTMLNamedCharacterReferences.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/AST/CommentHTMLNamedCharacterReferences.td",
+    out: "clang/AST/CommentHTMLNamedCharacterReferences.inc",
+    generators: "-gen-clang-comment-html-named-character-references",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_CommentCommandInfo_inc",
-    srcs: ["clang/AST/CommentCommands.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-comment-command-info $(in) -o $(out)",
-    out: ["clang/AST/CommentCommandInfo.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/AST/CommentCommands.td",
+    out: "clang/AST/CommentCommandInfo.inc",
+    generators: "-gen-clang-comment-command-info",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_CommentCommandList_inc",
-    srcs: ["clang/AST/CommentCommands.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-comment-command-list $(in) -o $(out)",
-    out: ["clang/AST/CommentCommandList.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/AST/CommentCommands.td",
+    out: "clang/AST/CommentCommandList.inc",
+    generators: "-gen-clang-comment-command-list",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_AST_StmtDataCollectors_inc",
-    srcs: ["clang/AST/StmtDataCollectors.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-data-collectors $(in) -o $(out)",
-    out: ["clang/AST/StmtDataCollectors.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/AST/StmtDataCollectors.td",
+    out: "clang/AST/StmtDataCollectors.inc",
+    generators: "-gen-clang-data-collectors",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticAnalysisKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Analysis $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticAnalysisKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticAnalysisKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Analysis",
 }
 
-
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticASTKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=AST $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticASTKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticASTKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=AST",
 }
 
-
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticCommentKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Comment $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticCommentKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticCommentKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Comment",
 }
 
-
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticCommonKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Common $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticCommonKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticCommonKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Common",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticCrossTUKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=CrossTU $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticCrossTUKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticCrossTUKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=CrossTU",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticDriverKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Driver $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticDriverKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticDriverKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Driver",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticFrontendKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Frontend $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticFrontendKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticFrontendKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Frontend",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticLexKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Lex $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticLexKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticLexKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Lex",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticParseKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Parse $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticParseKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticParseKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Parse",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticRefactoringKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Refactoring $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticRefactoringKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticRefactoringKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Refactoring",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticSemaKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Sema $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticSemaKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticSemaKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Sema",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticSerializationKinds_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-defs -clang-component=Serialization $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticSerializationKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticSerializationKinds.inc",
+    generators: "-gen-clang-diags-defs -clang-component=Serialization",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticGroups_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diag-groups $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticGroups.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticGroups.inc",
+    generators: "-gen-clang-diag-groups",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_DiagnosticIndexName_inc",
-    srcs: ["clang/Basic/Diagnostic.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-diags-index-name $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/DiagnosticIndexName.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Diagnostic.td",
+    out: "clang/Basic/DiagnosticIndexName.inc",
+    generators: "-gen-clang-diags-index-name",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_AttrList_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-list $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Basic/AttrList.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Basic/AttrList.inc",
+    generators: "-gen-clang-attr-list",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_AttrSubMatchRulesList_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-subject-match-rule-list $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Basic/AttrSubMatchRulesList.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Basic/AttrSubMatchRulesList.inc",
+    generators: "-gen-clang-attr-subject-match-rule-list",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_AttrHasAttributeImpl_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-has-attribute-impl $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Basic/AttrHasAttributeImpl.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Basic/AttrHasAttributeImpl.inc",
+    generators: "-gen-clang-attr-has-attribute-impl",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_arm_neon_inc",
-    srcs: ["clang/Basic/arm_neon.td"],
-    cmd: "$(location clang8_tblgen) -gen-arm-neon-sema $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/arm_neon.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/arm_neon.td",
+    out: "clang/Basic/arm_neon.inc",
+    generators: "-gen-arm-neon-sema",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Basic_arm_fp16_inc",
-    srcs: ["clang/Basic/arm_fp16.td"],
-    cmd: "$(location clang8_tblgen) -gen-arm-neon-sema $(in) -o $(out)" + basic_tblgen_includes,
-    out: ["clang/Basic/arm_fp16.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/arm_fp16.td",
+    out: "clang/Basic/arm_fp16.inc",
+    generators: "-gen-arm-neon-sema",
 }
 
 llvm8_tblgen {
@@ -341,84 +299,74 @@ llvm8_tblgen {
     generators: "-gen-opt-parser-defs",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Parse_AttrParserStringSwitches_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-parser-string-switches $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Parse/AttrParserStringSwitches.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Parse/AttrParserStringSwitches.inc",
+    generators: "-gen-clang-attr-parser-string-switches",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Parse_AttrSubMatchRulesParserStringSwitches_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-subject-match-rules-parser-string-switches $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Parse/AttrSubMatchRulesParserStringSwitches.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Parse/AttrSubMatchRulesParserStringSwitches.inc",
+    generators: "-gen-clang-attr-subject-match-rules-parser-string-switches",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Sema_AttrTemplateInstantiate_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-template-instantiate $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Sema/AttrTemplateInstantiate.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrTemplateInstantiate.inc",
+    generators: "-gen-clang-attr-template-instantiate",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Sema_AttrParsedAttrList_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-parsed-attr-list $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Sema/AttrParsedAttrList.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrParsedAttrList.inc",
+    generators: "-gen-clang-attr-parsed-attr-list",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Sema_AttrParsedAttrKinds_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-parsed-attr-kinds $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Sema/AttrParsedAttrKinds.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrParsedAttrKinds.inc",
+    generators: "-gen-clang-attr-parsed-attr-kinds",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Sema_AttrSpellingListIndex_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-spelling-index $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Sema/AttrSpellingListIndex.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrSpellingListIndex.inc",
+    generators: "-gen-clang-attr-spelling-index",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Sema_AttrParsedAttrImpl_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-parsed-attr-impl $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Sema/AttrParsedAttrImpl.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Sema/AttrParsedAttrImpl.inc",
+    generators: "-gen-clang-attr-parsed-attr-impl",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Serialization_AttrPCHRead_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-pch-read $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Serialization/AttrPCHRead.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Serialization/AttrPCHRead.inc",
+    generators: "-gen-clang-attr-pch-read",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_Serialization_AttrPCHWrite_inc",
-    srcs: ["clang/Basic/Attr.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-attr-pch-write $(in) -o $(out)" + clang_tblgen_includes,
-    out: ["clang/Serialization/AttrPCHWrite.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/Basic/Attr.td",
+    out: "clang/Serialization/AttrPCHWrite.inc",
+    generators: "-gen-clang-attr-pch-write",
 }
 
-genrule {
+clang8_tblgen {
     name: "clang8_include_clang_StaticAnalyzer_Checkers_Checkers_inc",
-    srcs: ["clang/StaticAnalyzer/Checkers/Checkers.td"],
-    cmd: "$(location clang8_tblgen) -gen-clang-sa-checkers $(in) -o $(out)" + checkers_tblgen_includes,
-    out: ["clang/StaticAnalyzer/Checkers/Checkers.inc"],
-    tools: ["clang8_tblgen"],
+    in: "clang/StaticAnalyzer/Checkers/Checkers.td",
+    out: "clang/StaticAnalyzer/Checkers/Checkers.inc",
+    generators: "-gen-clang-sa-checkers",
 }
 
 cc_library_headers {
