@@ -334,12 +334,11 @@ genrule {
     tools: ["clang8_tblgen"],
 }
 
-genrule {
+llvm8_tblgen {
     name: "clang8_include_clang_Driver_Options_inc",
-    srcs: ["clang/Driver/Options.td"],
-    cmd: "$(location llvm8_tblgen) -gen-opt-parser-defs $(in) -o $(out)" + llvm_tblgen_includes + driver_tblgen_includes,
-    out: ["clang/Driver/Options.inc"],
-    tools: ["llvm8_tblgen"],
+    in: "clang/Driver/Options.td",
+    out: "clang/Driver/Options.inc",
+    generators: "-gen-opt-parser-defs",
 }
 
 genrule {
