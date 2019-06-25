@@ -57,7 +57,6 @@ cc_library_static {
         "clang8_lib_Format",
         "clang8_lib_Frontend",
         "clang8_lib_Frontend_Rewrite",
-        "clang8_lib_FrontendTool",
         "clang8_lib_Index",
         "clang8_lib_Lex",
         "clang8_lib_Parse",
