@@ -29,7 +29,7 @@ func init() {
 }
 
 var (
-	pctx = android.NewPackageContext("android/soong/external/bpftrace/clang")
+	pctx = android.NewPackageContext("android/soong/external/bpftrace/clang8")
 	clang8Tblgen = pctx.HostBinToolVariable("clang8Tblgen", "clang8_tblgen")
 	clang8TblgenRule = pctx.StaticRule("tblgenRule", blueprint.RuleParams{
 		Depfile:     "${out}.d",
@@ -60,7 +60,7 @@ func (t *tblgen) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	out := android.PathForModuleGen(ctx, proptools.String(t.properties.Out))
 
 	includes := []string{
-		"-I external/bpftrace/clang/include",
+		"-I external/bpftrace/clang8/include",
 		"-I " + filepath.Dir(in.String()),
 	}
 
