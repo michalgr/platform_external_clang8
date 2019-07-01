@@ -30,6 +30,7 @@ cc_defaults {
     name: "clang8_defaults",
     header_libs: ["clang8_headers"],
     cflags: [
+        "-Oz",
         "-Wno-unused-parameter",
     ],
     static_libs: [
